@@ -9,11 +9,6 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function index()
-    {
-        return view('product');
-    }
-
     protected $fillable = [
         'nama_product',
         'kode_product',

@@ -22,5 +22,10 @@ Route::get('/', function () {
 
 Route::view('/tes', 'pages.tes');
 Route::view('/home', 'pages.home');
-Route::view('/product', 'pages.product', [ProductController::class, 'index']);
 
+
+// Kalau bingung ini apa lihat lagi cara fajar
+Route::controller(ProductController::class)->group(function () {
+    Route::get('/products', 'index')
+        ->name('products');
+});
