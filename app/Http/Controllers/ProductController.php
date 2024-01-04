@@ -12,9 +12,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('pages.product', [
-            'products' => Product::all(),
-        ]);
+
+        $products = Product::latest()->get();
+        return view('pages.product.index', ['products' => $products]);
     }
 
     /**
@@ -22,14 +22,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $product = new Product();
-        $product->nama_product = 'Nama Produk';
-        $product->kode_product = 'Kode Produk';
-        $product->harga_product = 'Harga Produk';
-
-        return view('pages.product', [
-            'product' => $product
-        ]);
     }
 
     /**
@@ -53,7 +45,6 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        
     }
 
     /**

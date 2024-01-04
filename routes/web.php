@@ -22,25 +22,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/tes', 'pages.tes');
-Route::view('/home', 'pages.home');
+Route::view('/tes', 'pages.tes')
+    ->name('tes');
+Route::view('/home', 'pages.home')
+    ->name('home');
 
 
-// Kalau bingung ini apa lihat lagi cara fajar
 Route::controller(ProductController::class)->group(function () {
-    Route::get('/product', 'index')
-        ->name('product');
-});
-Route::controller(ProductController::class)->group(function () {
-    Route::get('/product-add', 'create')
-        ->name('product');
+    Route::get('/products', 'index')
+        ->name('products');
 });
 
 Route::controller(TransactionController::class)->group(function () {
     Route::get('/transaction', 'index')
         ->name('transaction');
 });
+
 Route::controller(UserController::class)->group(function () {
-    Route::get('/user', 'index')
-        ->name('user');
+    Route::get('/users', 'index')
+        ->name('users');
 });
