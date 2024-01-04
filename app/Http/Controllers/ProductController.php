@@ -22,7 +22,14 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $product = new Product();
+        $product->nama_product = 'Nama Produk';
+        $product->kode_product = 'Kode Produk';
+        $product->harga_product = 'Harga Produk';
+
+        return view('pages.product', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -46,7 +53,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        
     }
 
     /**
@@ -54,7 +61,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+
+        $product = Product::findOrFail($product);
+        $product->update($request->all());
+        return redirect('/product');
     }
 
     /**
@@ -62,6 +72,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $deleteProduct = Product::findOrFail($product);
+        $deleteProduct->delete();
+
+        return redirect('/product');
     }
 }
